@@ -1,1 +1,1 @@
-# GirlsHack
+# GirlHacks
