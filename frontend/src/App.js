@@ -1,5 +1,5 @@
 import React from 'react'
-import JobDescriptionForm from './JobDescriptionForm'
+import JobDescriptionForm from './components/JobDescriptionForm'
 
 const App = () => {
   return (
