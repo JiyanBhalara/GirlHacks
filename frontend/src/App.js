@@ -1,10 +1,10 @@
 import React from 'react'
-import JobDescriptionForm from './components/JobDescriptionForm'
+import FileUploadPage  from './components/FileUploadPage'
 
 const App = () => {
   return (
-    <div>
-      <JobDescriptionForm/>
+    <div className='bg-custom-image bg-center bg-cover'>
+      <FileUploadPage />
     </div>
   )
 }

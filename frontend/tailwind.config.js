@@ -1,8 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
+  mode: "jit",
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "custom-image": "url('../public/skillissue.webp')",
+      },
+    },
+    variants: {
+      extend: {},
+    },
+    plugins: [],
   },
-  plugins: [],
-}
+};
