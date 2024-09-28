@@ -72,12 +72,12 @@ function FileInputComponent({ label, onFileChange }) {
     };
 
     return (
-        <div className="p-6 w-full max-w-lg mx-auto bg-white rounded-xl shadow-md space-y-4">
+        <div className="p-6 w-full max-w-lg mx-auto bg-zinc-700/80 rounded-xl shadow-md space-y-4">
             <div className="space-y-2">
                 <div
                     onDragOver={handleDragOver}
                     onDrop={handleFileDrop}
-                    className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center cursor-pointer"
+                    className="border-2 border-dashed border-gray-300 text-white rounded-md p-6 text-center cursor-pointer"
                 >
                     Drag 'n' drop {label} here, or click to select files
                 </div>

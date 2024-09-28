@@ -1,24 +1,40 @@
-import React from 'react';
-import FileInputComponent from './FileInputComponent';  // Adjust the import path as necessary
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import FileInputComponent from "./FileInputComponent"; // Adjust the import path as necessary
 
 
 function FileUploadPage() {
+  const [showResumeUpload, setShowResumeUpload] = useState(false);
+  const navigate = useNavigate();
 
-    const handleFileReceived = (file) => {
-        // Process the file for backend uploading, etc.
-        console.log("File received:", file);
-        // Add your logic to handle the file here
-        return file
-    };
+  const navigateToJobRecommendations = () => {
+    navigate("/jobRecommendations");
+  };
 
-    
+  return (
+    <div className="flex flex-col bg-custom-image bg-cover items-center gap-10 justify-center min-h-screen ">
+      <FileInputComponent label="Job Description" onFileChange={() => {}} />
+      {showResumeUpload && (
+        <FileInputComponent label="Resume" onFileChange={() => {}} />
+      )}
 
-    return (
-        <div className="flex flex-col items-center gap-10 justify-center min-h-screen">
-            <FileInputComponent label="Job Description" onFileChange={handleFileReceived} />
-            <FileInputComponent label="Resume" onFileChange={handleFileReceived}/>
-        </div>
-    );
+      <div className="flex gap-20">
+        <button
+          className="rounded border px-4 py-2 bg-blue-500 text-white"
+          onClick={() => setShowResumeUpload(true)}
+        >
+          Show Skill Gap
+        </button>
+        <button
+          className="rounded border px-4 py-2 bg-blue-500 text-white"
+          
+          onClick={navigateToJobRecommendations}
+        >
+          Show Job Recommendations
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default FileUploadPage;

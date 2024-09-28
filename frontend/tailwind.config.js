@@ -6,8 +6,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "custom-image": "url('../public/skillissue.webp')",
+        "custom-image": "url('../public/skillissue.png')",
       },
+      brightness: {
+        '50': '.5', // 50% brightness
+      }
     },
     variants: {
       extend: {},
