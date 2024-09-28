@@ -11,7 +11,8 @@ function SkillChart({ skills }) {
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
       },
     ],
-  };
+  }; 
+
   return <Bar data={data} />;
 }
 
