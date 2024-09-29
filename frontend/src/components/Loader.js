@@ -5,17 +5,17 @@ function Loader() {
   React.useEffect(() => {
     const tl = gsap.timeline();
 
-    tl.from("#loader h3", {
-      x: 60,
-      opacity: 0,
-      duration: 1,
+    tl.to("#loader h3", {
+      x: -30,
+      opacity: 1,
+      duration: 0.8,
       stagger: 0.1,
     })
     .to("#loader h3", {
       opacity: 0,
       stagger: 0.1,
-      duration: 1,
-      x: -20,
+      duration: 0.7,
+      x: -60,
     })
     .to("#loader", {
       opacity: 0,

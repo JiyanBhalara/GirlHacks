@@ -12,14 +12,6 @@ function App() {
 
   return (
     <Router>
-      <div
-        className="fixed top-0 w-full h-full flex items-center justify-center text-white bg-[#101010] z-50 gap-2.5"
-        id="loader"
-      >
-        <h3 className="text-[2vw] font-extrabold">Tomorrow's</h3>
-        <h3 className="text-[2vw] font-extrabold">Brand,</h3>
-        <h3 className="text-[2vw] font-extrabold">Today ™️</h3>
-      </div>
 
       <Loader />
 
