@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
-import Logo from "../assets/images/skillissue1.png";
+import LogoLink from "./Logolink";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -31,12 +31,13 @@ function SignUp() {
         { headers: { "Content-Type": "application/json" } }
       );
       console.log("Signup successful:", response.data.message);
-      navigate("/SignIn");
+      navigate("/signin"); // Redirecting to SignIn page
     } catch (error) {
       console.error("Signup failed:", error);
       setError(error.response?.data?.message || "Signup failed");
     }
   };
+
   // const handleLogin = () =>{
   //     navigate('/login');
   // }
@@ -48,16 +49,7 @@ function SignUp() {
         transition={{ type: "spring", stiffness: 300 }}
         className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
       >
-        <a
-          href="/"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <img
-            src={Logo}
-            alt="logo"
-            style={{ width: "100%", height: "auto" }}
-          />
-        </a>
+        <LogoLink />
       </motion.div>
       <h1 className="dark:text-white absolute left-[44%]">
           <span className="text-[50px] font-['Rejouice_Headline']">SKILL</span>{" "}

@@ -27,7 +27,7 @@ const SignIn = () => {
       );
       setAuthenticated(true);
       localStorage.setItem("user", JSON.stringify(response.data.user));
-      navigate("/");
+      navigate("/FileUploadPage"); // Redirecting to FileUploadPage
     } catch (error) {
       setError(error.response?.data?.message || "Invalid email or password");
     }
