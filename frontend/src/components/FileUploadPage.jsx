@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FileInputComponent from "./FileInputComponent"; // Adjust the import path as necessary
+import { motion } from "framer-motion";
 
 function FileUploadPage() {
   const [jobDescriptionFile, setJobDescriptionFile] = useState(null);
