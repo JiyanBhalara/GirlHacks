@@ -12,7 +12,7 @@ function FileUploadPage() {
   };
 
   return (
-    <div className="flex flex-col bg-custom-image bg-cover items-center gap-10 justify-center min-h-screen ">
+    <div className="flex flex-col bg-cover items-center gap-10 justify-center min-h-screen ">
       <FileInputComponent label="Job Description" onFileChange={() => {}} />
       {showResumeUpload && (
         <FileInputComponent label="Resume" onFileChange={() => {}} />

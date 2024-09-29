@@ -5,12 +5,6 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundImage: {
-        "custom-image": "url('../public/skillissue.png')",
-      },
-      brightness: {
-        '50': '.5', // 50% brightness
-      }
     },
     variants: {
       extend: {},

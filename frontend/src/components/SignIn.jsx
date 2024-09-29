@@ -21,13 +21,13 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        "", // Your authentication endpoint here
+        "", // Replace with your actual endpoint
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
       setAuthenticated(true);
       localStorage.setItem("user", JSON.stringify(response.data.user));
-      navigate("/");
+      navigate("/FileUploadPage"); // Redirecting to FileUploadPage
     } catch (error) {
       setError(error.response?.data?.message || "Invalid email or password");
     }
