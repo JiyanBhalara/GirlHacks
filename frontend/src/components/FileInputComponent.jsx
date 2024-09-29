@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 
+
 function FileInputComponent({ label, onFileChange }) {
   const [file, setFile] = useState(null);
   const [previewFile, setPreviewFile] = useState(null);
