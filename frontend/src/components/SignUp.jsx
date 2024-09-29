@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { motion } from "framer-motion";
-import LogoLink from "./Logolink";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -44,13 +42,6 @@ function SignUp() {
 
   return (
     <section className="bg-gradient-to-r from-[#84A9AC] via-[#E4E3E3] to-[#3B6978]">
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300 }}
-        className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
-      >
-        <LogoLink />
-      </motion.div>
       <h1 className="dark:text-white absolute left-[44%]">
           <span className="text-[50px] font-['Rejouice_Headline']">SKILL</span>{" "}
           <span className="text-[30px] font-['Neue_Montreal']">ISSUE</span>

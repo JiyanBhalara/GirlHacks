@@ -17,7 +17,7 @@ function LogoLink() {
 
   return (
     <a href="/" onClick={handleLogoClick} className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-      <img src={Logo} alt="logo" style={{ width: "100%", height: "auto" }} />
+      <img src={Logo} alt="logo" style={{ width: "9vw", height: "auto" }} />
     </a>
   );
 }
