@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../assets/images/skillissue1.png";
 import { setAuthenticated } from "./utils/auth";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const formRef = useRef(); // Ref for the form container to animate
+
+  useEffect(() => {
+    gsap.fromTo(formRef.current, 
+      { scale: 0 }, // Start from zero scale
+      { scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)" } // Animate to full scale
+    );
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,13 +31,13 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/api/login", // Your authentication endpoint here
+        "http://127.0.0.1:3001/api/login",
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
       setAuthenticated(true);
       localStorage.setItem("user", JSON.stringify(response.data.user));
-      navigate("/FileUploadPage"); // Redirecting to FileUploadPage
+      navigate("/FileUploadPage");
     } catch (error) {
       setError(error.response?.data?.message || "Invalid email or password");
     }
@@ -39,7 +49,7 @@ const SignIn = () => {
         <motion.div
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
+          className="absolute left-[4%] top-[4%] w-40 mr-2"
         >
           <a
             href="/"
@@ -53,12 +63,12 @@ const SignIn = () => {
           </a>
         </motion.div>
 
-        <h1 className="dark:text-white ">
+        <h1 className="dark:text-white">
           <span className="text-[50px] font-['Rejouice_Headline']">SKILL</span>{" "}
           <span className="text-[30px] font-['Neue_Montreal']">ISSUE</span>
         </h1>
 
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-zinc-600 to-gray-100 dark:border-gray-900">
+        <div ref={formRef} className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-zinc-600 to-gray-100 dark:border-gray-900">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:gray-900">
               Sign in to your account
