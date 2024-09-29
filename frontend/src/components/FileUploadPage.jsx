@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FileInputComponent from "./FileInputComponent"; // Adjust the import path as necessary
 import { motion } from "framer-motion";
+import LogoLink from "./Logolink";
 
 function FileUploadPage() {
   const [jobDescriptionFile, setJobDescriptionFile] = useState(null);
@@ -32,18 +33,9 @@ function FileUploadPage() {
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300 }}
-        className="absolute left-[4%] top-[4%] w-40 mr-2"
+        className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
       >
-        <a
-          href="/"
-          className="flex items-center mb-6 text-2xl font-semibold text-[#181C14] dark:text-white"
-        >
-          <img
-            src={Logo}
-            alt="logo"
-            style={{ width: "100%", height: "auto" }}
-          />
-        </a>
+        <LogoLink />
       </motion.div>
       <FileInputComponent
         label="Job Description"

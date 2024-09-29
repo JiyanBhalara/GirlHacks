@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import Logo from "../assets/images/skillissue1.png";
+import LogoLink from "./Logolink";
 import { setAuthenticated } from "./utils/auth";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
@@ -46,22 +46,13 @@ const SignIn = () => {
   return (
     <section className="bg-gradient-to-r from-zinc-400 via-gray-600 to-zinc-600">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 300 }}
-          className="absolute left-[4%] top-[4%] w-40 mr-2"
-        >
-          <a
-            href="/"
-            className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-          >
-            <img
-              src={Logo}
-              alt="logo"
-              style={{ width: "100%", height: "auto" }}
-            />
-          </a>
-        </motion.div>
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
+      >
+        <LogoLink />
+      </motion.div>
 
         <h1 className="dark:text-white">
           <span className="text-[50px] font-['Rejouice_Headline']">SKILL</span>{" "}
