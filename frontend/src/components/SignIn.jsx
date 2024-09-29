@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import LogoLink from "./Logolink";
+
 import { setAuthenticated } from "./utils/auth";
-import { motion } from "framer-motion";
+
 import { gsap } from "gsap";
 
 const SignIn = () => {
@@ -46,13 +46,6 @@ const SignIn = () => {
   return (
     <section className="bg-gradient-to-r from-[#84A9AC] via-[#E4E3E3] to-[#3B6978]">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300 }}
-        className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
-      >
-        <LogoLink />
-      </motion.div> 
 
         <h1 className="dark:text-black">
           <span className="text-[50px] font-['Rejouice_Headline']">SKILL</span>{" "}

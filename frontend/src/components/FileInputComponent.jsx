@@ -111,7 +111,7 @@ function FileInputComponent({ label, onFileChange }) {
           onDrop={handleFileDrop}
           className="border-2 border-dashed bg-gradient-to-b from-dark-teal via-mid-teal to-light-teal border-[#204051] text-white rounded-md p-6 text-center cursor-pointer"
         >
-          Drag 'n' drop {label} here, or click to select files
+          Drag and drop {label} here, or click to select files
         </div>
         <input
           type="file"
