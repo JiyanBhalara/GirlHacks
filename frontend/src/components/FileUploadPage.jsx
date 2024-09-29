@@ -11,9 +11,9 @@ function FileUploadPage() {
   const navigate = useNavigate();
 
   const navigateToJobRecommendations = async () => {
-    if (jobDescription) {
+    if (resume) {
       const formData = new FormData();
-      formData.append("job_description", jobDescription);
+      formData.append("resume", resume);
 
       try {
         const response = await axios.post(
@@ -21,17 +21,17 @@ function FileUploadPage() {
           formData,
           {
             headers: {
-              "Content-Type": "multipart/form-data"
+              "Content-Type": "application/pdf"
             }
           }
         );
         navigate("/FileUploadPage"); // Navigate to another page after successful upload
       } catch (error) {
-        console.error("Error uploading job description:", error);
-        alert("Error uploading job description.");
+        console.error("Error uploading resume", error);
+        alert("Error uploading resume.");
       }
     } else {
-      alert("Please upload a job description first.");
+      alert("Please upload the resume first");
     }
   };
 
@@ -40,19 +40,19 @@ function FileUploadPage() {
       const formData = new FormData();
       formData.append("resume", resume);
       formData.append("job_description", jobDescription);
-
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000/upload_files",
+          "http://127.0.0.1/upload_files",
           formData,
           {
             headers: {
-              "Content-Type": "multipart/form-data"
+              "Content-Type": "application/pdf"
             }
           }
         );
+        console.log(response)
         setShowResumeUpload(true); // Enable display of resume input field and navigate
-        navigate("/"); // Navigate to the skill gaps page
+        navigate("/FileUploadPage"); // Navigate to the skill gaps page
       } catch (error) {
         console.error("Error uploading files:", error);
         alert("Error uploading files.");
@@ -65,17 +65,17 @@ function FileUploadPage() {
 
   return (
     <div className="flex flex-col bg-cover items-center gap-10 bg-skillissue bg-center justify-center min-h-screen ">
-      <FileInputComponent
-        label="Job Description"
-        onFileChange={(file) => setJobDescription(file)}
-      />
-      {showResumeUpload && (
+  
         <FileInputComponent
           label="Resume"
-          onFileChange={(file) => setResume(file)} // Correctly set the resume file
+          onFileChange={(file) => setResume(file[0])} // Correctly set the resume file
           style={{ display: "block" }} // Conditionally display this input
         />
-      )}
+      
+      {showResumeUpload && (<FileInputComponent
+        label="Job Description"
+        onFileChange={(file) => setJobDescription(file[0])}
+      />)}
 
       <div className="flex gap-20">
         <motion.button
