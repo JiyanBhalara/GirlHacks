@@ -17,11 +17,11 @@ function FileUploadPage() {
   };
 
   const handleShowSkillGap = () => {
-    if (jobDescriptionFile && resumeFile) {
-      setShowResumeUpload(true);
-    } else {
+    if (!jobDescriptionFile || !resumeFile) {
       alert("Please upload both job description and resume files first.");
+      return;
     }
+    setShowResumeUpload(true); // This will enable the display of the resume file input
   };
 
   return (
@@ -30,11 +30,12 @@ function FileUploadPage() {
         label="Job Description"
         onFileChange={(file) => setJobDescriptionFile(file)}
       />
-      <FileInputComponent
-        label="Resume"
-        onFileChange={(file) => setResumeFile(file)}
-        style={{ display: showResumeUpload ? "block" : "none" }} // Hide or show based on state
-      />
+      {showResumeUpload && (
+        <FileInputComponent
+          label="Resume"
+          onFileChange={(file) => setResumeFile(file)}
+        />
+      )}
 
       <div className="flex gap-20">
         <button
