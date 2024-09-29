@@ -52,16 +52,16 @@ const SignIn = () => {
           <span className="text-[30px] font-['Neue_Montreal']">ISSUE</span>
         </h1>
 
-        <div ref={formRef} className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-[#3B6978] to-[#E4E3E3] dark:border-[#223d46]">
+        <div ref={formRef} className="w-full bg-black rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-[#3B6978] to-[#E4E3E3] dark:border-[#223d46]">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:gray-900">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:gray-900">
               Sign in to your account
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
                 >
                   Your email
                 </label>
@@ -79,7 +79,7 @@ const SignIn = () => {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
                 >
                   Password
                 </label>
