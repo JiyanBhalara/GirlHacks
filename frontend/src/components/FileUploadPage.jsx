@@ -5,6 +5,7 @@ import FileInputComponent from "./FileInputComponent"; // Adjust the import path
 function FileUploadPage() {
   const [jobDescriptionFile, setJobDescriptionFile] = useState(null);
   const [resumeFile, setResumeFile] = useState(null);
+  const [showResumeUpload, setShowResumeUpload] = useState(false);
   const navigate = useNavigate();
 
   const navigateToJobRecommendations = () => {
@@ -17,8 +18,10 @@ function FileUploadPage() {
 
   const handleShowSkillGap = () => {
     if (jobDescriptionFile && resumeFile) {
-      navigate("/skillGaps"); // Navigate to the skill gaps page when both files are uploaded and the button is clicked
+      setShowResumeUpload(true);  // Enable display of resume input field and navigate
+      navigate("/skillGaps"); // Navigate to the skill gaps page
     } else {
+      setShowResumeUpload(false); // Ensure the resume field remains hidden if files are missing
       alert("Please upload both job description and resume files first.");
     }
   };
@@ -29,11 +32,13 @@ function FileUploadPage() {
         label="Job Description"
         onFileChange={(file) => setJobDescriptionFile(file)}
       />
-      <FileInputComponent
-        label="Resume"
-        onFileChange={(file) => setResumeFile(file)}
-        style={{ display: "block" }} // Always display the Resume input for simplicity in this example
-      />
+      {showResumeUpload && (
+        <FileInputComponent
+          label="Resume"
+          onFileChange={(file) => setResumeFile(file)}
+          style={{ display: "block" }} // Conditionally display this input
+        />
+      )}
 
       <div className="flex gap-20">
         <button
