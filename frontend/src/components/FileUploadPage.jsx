@@ -29,7 +29,7 @@ function FileUploadPage() {
   };
 
   return (
-    <div className="flex flex-col bg-cover items-center gap-10 bg-[#204051] justify-center min-h-screen ">
+    <div className="flex flex-col bg-cover items-center gap-10 bg-skillissue bg-center justify-center min-h-screen ">
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300 }}
