@@ -29,7 +29,7 @@ function FileUploadPage() {
   };
 
   return (
-    <div className="flex flex-col bg-cover items-center gap-10 bg-[#181C14] justify-center min-h-screen ">
+    <div className="flex flex-col bg-cover items-center gap-10 bg-[#204051] justify-center min-h-screen ">
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300 }}
@@ -53,7 +53,7 @@ function FileUploadPage() {
         <motion.button
           whileHover={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="rounded-xl bg-gradient-to-r from-zinc-700 to-zinc-400 border px-4 py-2 text-white"
+          className="rounded-xl bg-gradient-to-r from-[#84A9AC] to-[#E4E3E3] border px-4 py-2 text-white"
           onClick={handleShowSkillGap}
         >
           Show Skill Gap
@@ -61,7 +61,7 @@ function FileUploadPage() {
         <motion.button
           whileHover={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="rounded-xl bg-gradient-to-r from-zinc-700 to-zinc-400 border px-4 py-2 text-white"
+          className="rounded-xl bg-gradient-to-r from-[#84A9AC] to-[#E4E3E3] border px-4 py-2 text-white"
           onClick={navigateToJobRecommendations}
         >
           Show Job Recommendations

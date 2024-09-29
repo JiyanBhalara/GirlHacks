@@ -44,7 +44,7 @@ const SignIn = () => {
   };
 
   return (
-    <section className="bg-gradient-to-r from-zinc-400 via-gray-600 to-zinc-600">
+    <section className="bg-gradient-to-r from-[#84A9AC] via-[#E4E3E3] to-[#3B6978]">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <motion.div
         whileHover={{ scale: 1.1 }}
@@ -52,14 +52,14 @@ const SignIn = () => {
         className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
       >
         <LogoLink />
-      </motion.div>
+      </motion.div> 
 
         <h1 className="dark:text-white">
           <span className="text-[50px] font-['Rejouice_Headline']">SKILL</span>{" "}
           <span className="text-[30px] font-['Neue_Montreal']">ISSUE</span>
         </h1>
 
-        <div ref={formRef} className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-zinc-600 to-gray-100 dark:border-gray-900">
+        <div ref={formRef} className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-[#3B6978] to-[#E4E3E3] dark:border-[#223d46]">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:gray-900">
               Sign in to your account
@@ -76,7 +76,7 @@ const SignIn = () => {
                   type="email"
                   name="email"
                   id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-[#E4E3E3] text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-white dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
                   placeholder="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -97,14 +97,14 @@ const SignIn = () => {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-[#E4E3E3] text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-white dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
                   required
                 />
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}
               <button
                 type="submit"
-                className="w-full text-black bg-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-800"
+                className="w-full text-black bg-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:[#3B6978]"
               >
                 Sign in
               </button>
