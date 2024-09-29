@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 function App() {
   return (
-    <Router className="relative">
+    <Router className="relative overflow-hidden">
       <Loader />
       <div className="bg-gradient-to-r text-white">
         <nav className="relative flex justify-between items-center p-4">

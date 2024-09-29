@@ -81,7 +81,7 @@ function FileUploadPage() {
         <motion.button
           whileHover={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="rounded-xl bg-gradient-to-r from-[#84A9AC] to-[#E4E3E3] border px-4 py-2 text-white"
+          className="rounded-xl bg-gradient-to-r from-[#486366] to-[#857878] border px-4 py-2 text-black"
           onClick={handleShowSkillGap}
         >
           Show Skill Gap
@@ -89,7 +89,7 @@ function FileUploadPage() {
         <motion.button
           whileHover={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="rounded-xl bg-gradient-to-r from-[#84A9AC] to-[#E4E3E3] border px-4 py-2 text-white"
+          className="rounded-xl bg-gradient-to-r from-[#486366] to-[#857878] border px-4 py-2 text-black"
           onClick={navigateToJobRecommendations}
         >
           Show Job Recommendations
