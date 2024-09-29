@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-
+import axios from 'axios';
 
 function FileInputComponent({ label, onFileChange }) {
   const [file, setFile] = useState(null);
@@ -46,6 +46,7 @@ function FileInputComponent({ label, onFileChange }) {
   };
 
   const handleClosePreview = () => {
+    axios.post()
     setPreviewFile(null);
   };
 
@@ -68,7 +69,7 @@ function FileInputComponent({ label, onFileChange }) {
         : "🗂️")
     );
   };
-
+  
   const filePreview = (file) => {
     if (file.type.startsWith("image")) {
       return (
