@@ -5,8 +5,13 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        'light-teal': '#b2d8d8',
+        'mid-teal': '#66b2b2',
+        'dark-teal': '#008080'
+      },
       backgroundImage: {
-        'skillissue': "url('/src/assets/images/BG-Skillissue.jpeg')" // Update the path according to where your image is stored
+        'skillissue': "url('/src/assets/images/BG-Skillissue.png')" // Update the path according to where your image is stored
       }
     },
     variants: {
