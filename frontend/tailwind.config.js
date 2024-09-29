@@ -5,6 +5,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: {
+        'skillissue': "url('/src/assets/images/BG-Skillissue.jpeg')" // Update the path according to where your image is stored
+      }
     },
     variants: {
       extend: {},

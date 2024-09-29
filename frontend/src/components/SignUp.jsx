@@ -43,7 +43,7 @@ function SignUp() {
   // }
 
   return (
-    <section className="bg-gradient-to-r from-zinc-400 via-gray-600 to-zinc-600">
+    <section className="bg-gradient-to-r from-[#84A9AC] via-[#E4E3E3] to-[#3B6978]">
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300 }}
@@ -56,7 +56,7 @@ function SignUp() {
           <span className="text-[30px] font-['Neue_Montreal']">ISSUE</span>
         </h1>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 max-w-md">
-        <div className="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-zinc-600 to-gray-100 dark:border-gray-900">
+        <div className="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-[#84A9AC] to-[#E4E3E3] dark:border-[#3B6978]">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-white">
               Create an account
@@ -73,7 +73,7 @@ function SignUp() {
                   name="name"
                   id="name"
                   placeholder="My name is..."
-                  className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-[#E4E3E3] text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-white dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -90,7 +90,7 @@ function SignUp() {
                   type="email"
                   name="email"
                   id="email"
-                  className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-[gray-50] border border-[#E4E3E3] text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-white dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
                   placeholder="name@company.com"
                   required
                   value={email}
@@ -109,7 +109,7 @@ function SignUp() {
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-[#E4E3E3] text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-white dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -127,7 +127,7 @@ function SignUp() {
                   name="confirm-password"
                   id="confirm-password"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-[#E4E3E3] text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-white dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
