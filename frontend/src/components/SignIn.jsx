@@ -44,7 +44,7 @@ const SignIn = () => {
   };
 
   return (
-    <section className="bg-gradient-to-r from-[#84A9AC] via-[#E4E3E3] to-[#3B6978]">
+    <section className="bg-gradient-to-r]">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 
         <h1 className="dark:text-black">
@@ -69,7 +69,7 @@ const SignIn = () => {
                   type="email"
                   name="email"
                   id="email"
-                  className="bg-gray-50 border border-[#E4E3E3] text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-white dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
+                  className="bg-gray-50 border border-[#E4E3E3] text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-black dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
                   placeholder="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -90,7 +90,7 @@ const SignIn = () => {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-gray-50 border border-[#E4E3E3] text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-white dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
+                  className="bg-gray-50 border border-[#E4E3E3] text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-[#84A9AC] dark:border-[#E4E3E3] dark:placeholder-[#3B6978] dark:text-black dark:focus:ring-[#E4E3E3] dark:focus:border-[#3B6978]"
                   required
                 />
               </div>

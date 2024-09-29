@@ -3,7 +3,7 @@ import React from "react";
 
 function Contact_us() {
   return (
-    <div className="min-h-screen bg-gradient-to-r p-40 ">
+    <div className="min-h-screen bg-gradient-to-r p-40">
       <h2 className="text-2xl text-soft-teal font-bold mb-6 font-['Rejouice_Headline']">Contact Us</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {[
