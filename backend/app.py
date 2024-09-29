@@ -22,8 +22,7 @@ CORS(app)
 load_dotenv()
 groq_api = os.getenv('GROQ_API_KEY')
 # Connect to MongoDB
-client = MongoClient('mongodb+srv://UserTest:UserTest123@usertest.am1ig.mongodb.net/?retryWrites=true&w=majority&appName=UserTest', ssl="True", ssl_cert_reqs='CERT_REQUIRED')
-
+client = MongoClient('mongodb+srv://UserTest:UserTest123@usertest.am1ig.mongodb.net/?ssl=true&ssl_cert_reqs=CERT_NONE&retryWrites=true&w=majority&appName=UserTest')
 try:
     client.admin.command('ping') 
     print("MongoDB is connected")
