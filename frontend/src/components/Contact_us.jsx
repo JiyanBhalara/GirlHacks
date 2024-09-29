@@ -10,7 +10,7 @@ function Contact_us() {
           { name: "Kush", email: "kushrank24680@gmail.com" },
           { name: "Jiyan", email: "jiyanbhalara000@gmail.com" },
           { name: "Sandra", email: "sandramierzejewski@gmail.com" },
-          { name: "Mustansir", email: "" }, // Intentionally left blank
+          { name: "Mustansir", email: "mustankap@gmail.com" }, // Intentionally left blank
         ].map((contact, index) => (
           <div key={index} className="bg-soft-teal p-4 rounded text-dark-slate">
             <h3 className="font-semibold font-['Rejouice_Headline']">{contact.name}</h3>
