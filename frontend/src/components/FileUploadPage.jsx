@@ -21,7 +21,7 @@ function FileUploadPage() {
       setShowResumeUpload(true);  // Enable display of resume input field and navigate
       navigate("/skillGaps"); // Navigate to the skill gaps page
     } else {
-      setShowResumeUpload(false); // Ensure the resume field remains hidden if files are missing
+      setShowResumeUpload(true); // Ensure the resume field remains hidden if files are missing
       alert("Please upload both job description and resume files first.");
     }
   };
