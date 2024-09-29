@@ -29,8 +29,8 @@ try:
     db = client['UserTest']
     users_collection = db['users']
 except Exception as e:
-    print("MongoDB connection failed:", e)
-
+    # pri9'nt("MongoDB connection failed:", e)
+    print("Error")
 try:
     client.admin.command('ping')
     print("MongoDB is connected")
