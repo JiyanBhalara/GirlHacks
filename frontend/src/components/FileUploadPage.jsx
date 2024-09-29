@@ -18,11 +18,11 @@ function FileUploadPage() {
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000/uploadfiles",
+          "https://127.0.0.1:5000/uploadfiles",
           formData,
           {
             headers: {
-              "Content-Type": "multipart/form-data"
+              "Content-Type": "form-data"
             }
           }
         );
@@ -44,11 +44,11 @@ function FileUploadPage() {
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000/uploadfiles",
+          "https://127.0.0.1:5000/uploadfiles",
           formData,
           {
             headers: {
-              "Content-Type": "multipart/form-data"
+              "Content-Type": "form-data"
             }
           }
         );
