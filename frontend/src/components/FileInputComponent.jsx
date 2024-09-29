@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import axios from 'axios';
 
 function FileInputComponent({ label, onFileChange }) {
   const [file, setFile] = useState(null);
@@ -45,6 +46,7 @@ function FileInputComponent({ label, onFileChange }) {
   };
 
   const handleClosePreview = () => {
+    axios.post()
     setPreviewFile(null);
   };
 
@@ -102,7 +104,7 @@ function FileInputComponent({ label, onFileChange }) {
   };
 
   return (
-    <div className="p-6 w-full max-w-lg mx-auto bg-teal-gradient rounded-xl shadow-md space-y-4">
+    <div className="p-6 w-full max-w-lg mx-auto bg-gradient-to-l from-mid-grey via-light-grey to-dark-grey rounded-xl shadow-md space-y-4">
       <div className="space-y-2">
         <div
           onDragOver={handleDragOver}
@@ -120,7 +122,7 @@ function FileInputComponent({ label, onFileChange }) {
         />
         <label
           htmlFor={`${label.replace(/\s+/g, "-").toLowerCase()}-input`}
-          className="block w-full text-center bg-gradient-to-b from-light-teal via-mid-teal to-dark-teal hover:bg-[#E4E3E3] active:bg-[#84A9AC] text-white font-semibold py-2 px-4 rounded cursor-pointer transition duration-300 ease-in-out"
+          className="block w-full text-center bg-gradient-to-l from-light-grey via-dark-grey to-mid-grey hover:bg-dark-grey active:bg-mid-grey text-white font-semibold py-2 px-4 rounded cursor-pointer transition duration-300 ease-in-out"
         >
           Browse files
         </label>

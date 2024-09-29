@@ -5,25 +5,22 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from bson import ObjectId
 from datetime import datetime
+import PyPDF2
+from io import BytesIO
 import os
-from PyPDF2 import PdfReader
 import docx
 import json
 import re 
 from groq import Groq
 import pandas as pd
 from rec_courses import recommend_course
-from fastapi import FastAPI, File, UploadFile
-import shutil
-from fastapi.middleware.cors import CORSMiddleware
 from recommending import process_pdfs
 #from mgstring import connec_string, groq_api
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="./keys.env")
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
-
+CORS(app)
 load_dotenv()
 groq_api = os.getenv('GROQ_API_KEY')
 # Connect to MongoDB
@@ -282,12 +279,24 @@ def skill_analyze():
     except Exception as e:
         return jsonify({'message': f'Error processing files: {str(e)}'}), 500
 
-def extract_text_from_pdf(pdf_file):
-    reader = PdfReader(pdf_file)  # Using PdfReader to read the PDF
-    text = ""
-    for page in reader.pages:
-        text += page.extract_text() + "\n"
-    return text
+def extract_text_from_pdf(file_content):
+    if isinstance(file_content, str):
+        file_content = file_content.encode()
+    
+    try:
+        # Use PyPDF2 to read the PDF from the BytesIO object
+        pdf_reader = PyPDF2.PdfReader(BytesIO(file_content))
+        text = ""
+
+        # Extract text from all pages
+        for page in pdf_reader.pages:
+            text += page.extract_text()
+
+        return text
+    except PyPDF2.errors.PdfReadError:
+        return "Error: Could not read the PDF file. The file may be corrupted or incomplete."
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 def normalize_skill(skill):
     return re.sub(r'[^\w\s]', '', skill.lower())
@@ -317,6 +326,87 @@ def is_skill_match(resume_skills, job_skill, threshold=0.3):
     similarity = jaccard_similarity(job_tokens, resume_tokens)
     return similarity >= threshold
     
+def compare_skills(resume_text, job_text):
+    prompt = rf"""
+    Resume:
+    {resume_text}
+
+    Job Description:
+    {job_text}
+
+    Based on the resume and job description provided, please:
+    1. List skills mentioned in the resume As "skills_from_resume". ADD WITHOUT SUBHEADINGS.
+    2. List the skills required in the job description in "skills_required_in_job", PLEASE AVOID WIDE AND GENERIC SKILLS AND ONLY MENTION DEFINITE SKILLS THAT CAN BE LEARNED THROUGH A UDEMY COURSE.
+    If only key responsibilities\duties are mentioned, then extract the required skills from that.
+    Otherwise, extract it from eligibility criteria, qualifications, or any other section that mentions the required skills.
+    3. Compare the skills from the resume with the skills required in the job description and list the matching skills. in "matching_skills".
+    4. List the skills from the job description that are not present in the resume As "skills_to_improve".
+    Present the results in a structured JSON format.
+    """
+
+    try:
+        chat_completion = groq_client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            model="gemma-7b-it",
+        )
+        response = chat_completion.choices[0].message.content
+        
+        # Print the raw response for debugging
+        print("Raw API response:", response)
+        
+        # Try to find and extract the JSON part of the response
+        json_match = re.search(r'\{.*\}', response, re.DOTALL)
+        if json_match:
+            json_str = json_match.group(0)
+            skills_data = json.loads(json_str)
+        else:
+            raise ValueError("No JSON object found in the response")
+
+        required_keys = ["skills_from_resume", "skills_required_in_job", "matching_skills", "skills_to_improve"]
+        if all(key in skills_data for key in required_keys):
+            return skills_data
+        else:
+            missing_keys = [key for key in required_keys if key not in skills_data]
+            raise ValueError(f"Missing required keys in JSON: {', '.join(missing_keys)}")
+
+    except json.JSONDecodeError as e:
+        print(f"JSON Decode Error: {str(e)}")
+        print("Response causing the error:", response)
+        return {"error": f"Invalid JSON in API response: {str(e)}"}
+    except Exception as e:
+        print(f"Error in skill analysis: {str(e)}")
+        print("Response causing the error:", response)
+        return {"error": f"Error in skill analysis: {str(e)}"}
+
+
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/upload_files', methods=['POST'])
+def upload_files():
+    if 'resume' not in request.files or 'job_description' not in request.files:
+        return jsonify({"error": "Missing files"}), 400  # Return error if files are missing
+
+    resume_file = request.files['resume']
+    job_description_file = request.files['job_description']
+
+    # Read the files as byte content
+    resume_content = resume_file.read()  # Returns bytes
+    job_description_content = job_description_file.read()  # Returns bytes
+
+    # Extract text from the PDF files and generate recommendations
+    recommendations = process_pdfs(resume_content, job_description_content)
+
+    if recommendations:
+        return jsonify({"recommendations": recommendations})
+    else:
+        return jsonify({"error": "Failed to extract text from one or both files"}), 500
+
 
 #@app.route('/recommend_course', methods=['POST'])
 def recommend_course_api():
@@ -337,50 +427,6 @@ def recommend_course_api():
         return jsonify({'error': 'No recommendation found'}), 404
     
     return jsonify({'recommendation': recommended_link})
-
-
-UPLOAD_DIRECTORY = "./uploaded_files"
-
-# Ensure the directory exists
-if not os.path.exists(UPLOAD_DIRECTORY):
-    os.makedirs(UPLOAD_DIRECTORY)
-
-@app.route("/uploadfiles", methods=["POST"])
-def upload_files():
-    # Check if files are present in the request
-    if 'resume' not in request.files or 'job_description' not in request.files:
-        return jsonify({"error": "Please upload both resume and job description."}), 400
-
-    # Get the uploaded files
-    resume = request.files['resume']
-    job_description = request.files['job_description']
-
-    # Create paths for storing the uploaded files
-    resume_location = os.path.join(UPLOAD_DIRECTORY, resume.filename)
-    job_description_location = os.path.join(UPLOAD_DIRECTORY, job_description.filename)
-
-    # Save the uploaded resume
-    resume.save(resume_location)
-
-    # Save the uploaded job description
-    job_description.save(job_description_location)
-
-    try:
-        # Process the files and generate recommendations
-        result = process_pdfs(resume_location, job_description_location)
-
-        # Return the extracted text and recommendations as a JSON response
-        return jsonify({
-            "resume_text": result["resume_text"],
-            "job_description_text": result["job_description_text"],
-        })
-
-    finally:
-        # Clean up: Delete the files after processing
-        if os.path.exists(resume_location):
-            os.remove(resume_location)
-        if os.path.exists(job_description_location):
-            os.remove(job_description_location)
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
