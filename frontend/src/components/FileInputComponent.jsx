@@ -109,7 +109,7 @@ function FileInputComponent({ label, onFileChange }) {
         <div
           onDragOver={handleDragOver}
           onDrop={handleFileDrop}
-          className="border-2 border-dashed border-[#204051] text-white rounded-md p-6 text-center cursor-pointer"
+          className="border-2 border-dashed bg-gradient-to-b from-dark-teal via-mid-teal to-light-teal border-[#204051] text-white rounded-md p-6 text-center cursor-pointer"
         >
           Drag 'n' drop {label} here, or click to select files
         </div>
@@ -122,7 +122,7 @@ function FileInputComponent({ label, onFileChange }) {
         />
         <label
           htmlFor={`${label.replace(/\s+/g, "-").toLowerCase()}-input`}
-          className="block w-full text-center bg-[#84A9AC] hover:bg-[#E4E3E3] active:bg-[#204051] text-white font-semibold py-2 px-4 rounded cursor-pointer transition duration-300 ease-in-out"
+          className="block w-full text-center bg-gradient-to-b from-light-teal via-mid-teal to-dark-teal hover:bg-[#E4E3E3] active:bg-[#84A9AC] text-white font-semibold py-2 px-4 rounded cursor-pointer transition duration-300 ease-in-out"
         >
           Browse files
         </label>
@@ -139,7 +139,7 @@ function FileInputComponent({ label, onFileChange }) {
         )}
       </div>
       {previewFile && (
-        <div className="fixed inset-0 bg-[#3B6978] bg-opacity-50 overflow-y-auto h-full w-full p-5">
+        <div className="fixed inset-0 bg-[#3B6978] overflow-y-auto h-full w-full p-5">
           <div className="relative top-20 mx-auto p-5 border w-3/4 shadow-lg rounded-md bg-white">
             <div className="flex justify-between items-center">
               <h4 className="text-lg font-bold truncate">{previewFile.name}</h4>
