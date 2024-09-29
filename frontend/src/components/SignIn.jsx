@@ -31,7 +31,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:3001/api/login",
+        "http://127.0.0.1:5000/api/login",
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
