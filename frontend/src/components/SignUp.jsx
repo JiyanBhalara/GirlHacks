@@ -26,7 +26,7 @@ function SignUp() {
     }
     try {
       const response = await axios.post(
-        "https://skana.onrender.com/api/signup",
+        "http://127.0.0.1:5000/api/signup",
         { name, email, password },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -38,7 +38,7 @@ function SignUp() {
     }
   };
   // const handleLogin = () =>{
-  //     navigate('/SignIn');
+  //     navigate('/login');
   // }
 
   return (
