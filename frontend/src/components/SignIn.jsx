@@ -54,7 +54,7 @@ const SignIn = () => {
         <LogoLink />
       </motion.div> 
 
-        <h1 className="dark:text-white">
+        <h1 className="dark:text-black">
           <span className="text-[50px] font-['Rejouice_Headline']">SKILL</span>{" "}
           <span className="text-[30px] font-['Neue_Montreal']">ISSUE</span>
         </h1>

@@ -6,9 +6,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'light-teal': '#b2d8d8',
-        'mid-teal': '#66b2b2',
-        'dark-teal': '#008080'
+        'light-grey': '#eaecef',
+        'mid-grey': '#D3D3D3',
+        'dark-grey': '#C0C0C0'
       },
       backgroundImage: {
         'skillissue': "url('/src/assets/images/BG-Skillissue.png')" // Update the path according to where your image is stored
