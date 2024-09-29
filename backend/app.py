@@ -5,14 +5,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from bson import ObjectId
 from datetime import datetime
+import PyPDF2
+from io import BytesIO
 import os
-from PyPDF2 import PdfReader
 import docx
 import json
 import re 
 from groq import Groq
 import pandas as pd
 from rec_courses import recommend_course
+from recommending import process_pdfs
 #from mgstring import connec_string, groq_api
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="./keys.env")
@@ -277,12 +279,24 @@ def skill_analyze():
     except Exception as e:
         return jsonify({'message': f'Error processing files: {str(e)}'}), 500
 
-def extract_text_from_pdf(pdf_file):
-    reader = PdfReader(pdf_file)  # Using PdfReader to read the PDF
-    text = ""
-    for page in reader.pages:
-        text += page.extract_text() + "\n"
-    return text
+def extract_text_from_pdf(file_content):
+    if isinstance(file_content, str):
+        file_content = file_content.encode()
+    
+    try:
+        # Use PyPDF2 to read the PDF from the BytesIO object
+        pdf_reader = PyPDF2.PdfReader(BytesIO(file_content))
+        text = ""
+
+        # Extract text from all pages
+        for page in pdf_reader.pages:
+            text += page.extract_text()
+
+        return text
+    except PyPDF2.errors.PdfReadError:
+        return "Error: Could not read the PDF file. The file may be corrupted or incomplete."
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 def normalize_skill(skill):
     return re.sub(r'[^\w\s]', '', skill.lower())
@@ -368,6 +382,31 @@ def compare_skills(resume_text, job_text):
         print(f"Error in skill analysis: {str(e)}")
         print("Response causing the error:", response)
         return {"error": f"Error in skill analysis: {str(e)}"}
+
+
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/upload_files', methods=['POST'])
+def upload_files():
+    if 'resume' not in request.files or 'job_description' not in request.files:
+        return jsonify({"error": "Missing files"}), 400  # Return error if files are missing
+
+    resume_file = request.files['resume']
+    job_description_file = request.files['job_description']
+
+    # Read the files as byte content
+    resume_content = resume_file.read()  # Returns bytes
+    job_description_content = job_description_file.read()  # Returns bytes
+
+    # Extract text from the PDF files and generate recommendations
+    recommendations = process_pdfs(resume_content, job_description_content)
+
+    if recommendations:
+        return jsonify({"recommendations": recommendations})
+    else:
+        return jsonify({"error": "Failed to extract text from one or both files"}), 500
+
 
 #@app.route('/recommend_course', methods=['POST'])
 def recommend_course_api():
