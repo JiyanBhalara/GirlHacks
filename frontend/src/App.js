@@ -61,7 +61,7 @@ function App() {
         <Route path="/jobRecommendations" element={<JobRecommendations />} />
       </Routes>
       <footer className="fixed bottom-0 right-[40%] bg-deep-teal text-center p-4 text-light-teal">
-        © 2024 SkillSync. All rights reserved.
+        © 2024 Skillissue. All rights reserved.
       </footer>
     </Router>
   );
