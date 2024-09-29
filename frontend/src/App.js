@@ -9,26 +9,42 @@ import Home from "./components/Home";
 import Contact_us from "./components/Contact_us";
 import Login from "./components/Login";
 import LogoLink from "./components/Logolink";
+import { motion } from "framer-motion";
 
 function App() {
   return (
-    <Router className='relative'>
+    <Router className="relative">
       <Loader />
       <div className="bg-gradient-to-r text-white">
         <nav className="relative flex justify-between items-center p-4">
           <div className="absolute top-[5%]">
-            <LogoLink />
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
+            >
+              <LogoLink />
+            </motion.div>
           </div>
 
           <div className="flex gap-10 fixed top-[7%] right-[10%]">
-            <Link to="/" className="text-lg absolute right-[10%] mr-60 text-black font-bold font-['Rejouice_Headline']">
+            <Link
+              to="/"
+              className="text-lg absolute right-[10%] mr-60 text-black font-bold font-['Rejouice_Headline']"
+            >
               Home
             </Link>
-            <Link to="/contact_us" className="absolute right-[5%] mx-2 w-40 text-lg text-black font-bold font-['Rejouice_Headline']">
+            <Link
+              to="/contact_us"
+              className="absolute right-[5%] mx-2 w-40 text-lg text-black font-bold font-['Rejouice_Headline']"
+            >
               Contact Us
             </Link>
             <button className="absolute bg-gradient-to-l from-teal-400 to-gray-500 rounded-xl w-auto px-2 py-1">
-              <Link to="/login" className="mx-2 text-lg font-bold text-black  font-['Rejouice_Headline']">
+              <Link
+                to="/login"
+                className="mx-2 text-lg font-bold text-black  font-['Rejouice_Headline']"
+              >
                 Login
               </Link>
             </button>
@@ -44,7 +60,7 @@ function App() {
         <Route path="/FileUploadPage" element={<FileUploadPage />} />
         <Route path="/jobRecommendations" element={<JobRecommendations />} />
       </Routes>
-      <footer className="fixed bottmo-0 bg-deep-teal text-center p-4 text-light-teal">
+      <footer className="fixed bottom-0 right-[40%] bg-deep-teal text-center p-4 text-light-teal">
         © 2024 SkillSync. All rights reserved.
       </footer>
     </Router>

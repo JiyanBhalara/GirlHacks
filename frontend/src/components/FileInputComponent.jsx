@@ -122,7 +122,7 @@ function FileInputComponent({ label, onFileChange }) {
         />
         <label
           htmlFor={`${label.replace(/\s+/g, "-").toLowerCase()}-input`}
-          className="block w-full text-center bg-gradient-to-l from-light-grey via-dark-grey to-mid-grey hover:bg-dark-grey active:bg-mid-grey text-white font-semibold py-2 px-4 rounded cursor-pointer transition duration-300 ease-in-out"
+          className="block w-full text-center bg-gradient-to-l from-light-grey via-dark-grey to-mid-grey hover:bg-dark-grey active:bg-mid-grey text-black font-semibold py-2 px-4 rounded cursor-pointer transition duration-300 ease-in-out"
         >
           Browse files
         </label>

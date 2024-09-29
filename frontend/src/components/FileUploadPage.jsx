@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FileInputComponent from "./FileInputComponent"; // Adjust the import path as necessary
+import FileInputComponent from "./FileInputComponent"; 
 import { motion } from "framer-motion";
-import LogoLink from "./Logolink";
 import axios from 'axios';
 
 function FileUploadPage() {
@@ -66,13 +65,6 @@ function FileUploadPage() {
 
   return (
     <div className="flex flex-col bg-cover items-center gap-10 bg-skillissue bg-center justify-center min-h-screen ">
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300 }}
-        className="absolute left-[4%] top-[4%] w-40 mr-2" // Ensure the container scales with the image
-      >
-        <LogoLink />
-      </motion.div>
       <FileInputComponent
         label="Job Description"
         onFileChange={(file) => setJobDescription(file)}
