@@ -69,6 +69,8 @@ def extract_text_from_pdf(file_content):
         return f"Error: {str(e)}"
 
 
+# Example usage
+
 def process_pdfs(resume_file_content, job_description_file_content):
     # Extract text from the resume PDF content
     resume_text = extract_text_from_pdf(resume_file_content)
@@ -78,7 +80,8 @@ def process_pdfs(resume_file_content, job_description_file_content):
 
     # Analyze resume and job description and generate recommendations
     if resume_text and job_description_text:
-        recommendations = analyze_resume_and_job_description(resume_text, job_description_text)
+        data = analyze_resume_and_job_description(resume_text, job_description_text)
+        recommendations = data.split("\n")
         return recommendations
     else:
         return None
