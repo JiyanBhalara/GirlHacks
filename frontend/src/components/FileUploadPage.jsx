@@ -18,7 +18,7 @@ function FileUploadPage() {
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000/uploadfiles",
+          "http://127.0.0.1:5000/upload_files",
           formData,
           {
             headers: {
@@ -44,7 +44,7 @@ function FileUploadPage() {
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000/uploadfiles",
+          "http://127.0.0.1:5000/upload_files",
           formData,
           {
             headers: {
