@@ -2,12 +2,21 @@
 
 🌟 Project Overview
 
-SkillIssue is a collaborative project aimed at addressing skill gaps in the workforce through innovative solutions. This web application leverages data from job markets and educational platforms to identify skill shortages and provide recommendations for upskilling or strategic hiring. Our goal is to enhance workforce readiness and empower industries with AI-powered insights.
+SkillIssue is a collaborative project aimed at addressing skill gaps in the workforce through innovative solutions. Users can upload their resumes along with job descriptions they want to apply for. The application analyzes this data to provide:
+
+- Skill gap analysis
+- ATS (Applicant Tracking System) score
+- Job recommendations
+- Suggestions on how to improve their resumes
+
+Our goal is to enhance workforce readiness and empower individuals with AI-powered insights for successful job applications.
 
 🚀 Features
 
-- Skill Gap Analysis: Analyze data to identify areas where skill gaps exist in various industries.
-- Recommendations: Provide tailored recommendations for upskilling and hiring strategies.
+- Skill Gap Analysis: Analyze user resumes against job descriptions to identify areas where skills are lacking.
+- ATS Score: Evaluate resumes for compatibility with Applicant Tracking Systems to increase the chances of passing initial screenings.
+- Job Recommendations: Provide tailored job recommendations based on user profiles and skill sets.
+- Improvement Suggestions: Offer actionable advice on how users can enhance their resumes to better align with job requirements.
 - User-Friendly Interface: A modern and intuitive interface built with React and styled using Tailwind CSS.
 - Real-Time Data Integration: Seamlessly integrate with various job market data sources for up-to-date information.
 - Machine Learning Integration: Utilize machine learning algorithms to enhance recommendations and insights.
@@ -20,7 +29,7 @@ SkillIssue is a collaborative project aimed at addressing skill gaps in the work
 - Database: [MongoDB](https://www.mongodb.com/) for flexible data storage and retrieval.
 - Machine Learning: Integration of machine learning techniques for skill gap analysis and actionable recommendations.
 
-🏁 Getting Started
+ 🏁 Getting Started
 
 To get a local copy of this project up and running, follow these steps:
 
@@ -56,12 +65,12 @@ To get a local copy of this project up and running, follow these steps:
      npm start
      ```
 
-🤝 Collaborators
+ 🤝 Collaborators
 
 - [KushDev19](https://github.com/KushDev19) - Kush Rank
 - [mustankap](https://github.com/mustankap) - Mustansir Kapasi
 
-💡 Contributing
+ 💡 Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements or features you would like to add.
 
